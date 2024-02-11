@@ -7,8 +7,9 @@
     "editor.tabSize": 2,
     "diffEditor.ignoreTrimWhitespace": false,
   },
+  "html.autoClosingTags": true,
   "[html]": {
     "editor.defaultFormatter": "vscode.html-language-features",
-    "editor.linkedEditing": true
+    "editor.linkedEditing": true,
   }
 }

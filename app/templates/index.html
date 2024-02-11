@@ -10,6 +10,11 @@
 
 <body>
     <h1>Hello, {{ user['username'] }}!</h1>
+    <main>
+        {% for post in posts %}
+        <p>{{ post.author.username }} says: <strong>{{ post.body }}</strong></p>
+        {% endfor %}
+    </main>
 </body>
 
 </html>
