@@ -1,7 +1,11 @@
 <html>
 
 <head>
+    {% if title %}
+    <title>{{ title }} - Microblog</title>
+    {% else %}
     <title>Home Page - Microblog</title>
+    {% endif %}
 </head>
 
 <body>
