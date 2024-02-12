@@ -11,7 +11,8 @@
             "extensions": [
                 "ms-python.python",
                 "tamasfe.even-better-toml",
-                "wholroyd.jinja"
+                "wholroyd.jinja",
+                "ms-python.autopep8"
             ]
         }
     }
