@@ -1,13 +1,15 @@
 import sqlalchemy as sa
-from flask import flash, render_template, redirect, url_for
-from flask_login import current_user, login_user, logout_user
+from flask import flash, render_template, redirect, url_for, request
+from flask_login import current_user, login_user, logout_user, login_required
 from app import app, db
 from app.forms import LoginForm
 from app.models import User
+from urllib.parse import urlsplit
 
 
 @app.route('/')
 @app.route('/index')
+@login_required
 def index():
     user = {'username': 'Miguel'}
     posts = [
@@ -30,7 +32,10 @@ def login():
             flash('Invalid username or password')
             return redirect(url_for('login'))
         login_user(user, remember=form.remember_me.data)
-        return redirect(url_for('index'))
+        next_page = request.args.get('next')
+        if not next_page or urlsplit(next_page).netloc != '':
+            next_page = url_for('index')
+        return redirect(next_page)
     # GET
     return render_template('login.html', title='Sign In', form=form)
 
