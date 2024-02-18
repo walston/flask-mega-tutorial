@@ -12,4 +12,4 @@ login = LoginManager(app)
 login.login_view = 'login'
 
 # fmt: off # circular import if above `app` declaration
-from app import routes, models
+from app import routes, models, errors
