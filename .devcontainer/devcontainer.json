@@ -4,13 +4,14 @@
     "dockerfile": "${localWorkspaceFolder}/Dockerfile",
     "context": "${localWorkspaceFolder}"
   },
-  "workspaceFolder": "/usr/src/app",
-  "workspaceMount": "type=bind,source=${localWorkspaceFolder},target=/usr/src/app",
+  "workspaceFolder": "/usr/src",
+  "workspaceMount": "type=bind,source=${localWorkspaceFolder},target=/usr/src",
   "customizations": {
     "vscode": {
       "extensions": [
         "ms-python.python",
-        "ms-python.autopep8"
+        "ms-python.autopep8",
+        "tamasfe.even-better-toml"
       ]
     }
   }
