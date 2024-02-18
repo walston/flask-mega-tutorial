@@ -10,9 +10,9 @@
         "vscode": {
             "extensions": [
                 "ms-python.python",
-                "ms-python.autopep8",
                 "tamasfe.even-better-toml",
-                "wholroyd.jinja"
+                "wholroyd.jinja",
+                "ms-python.autopep8"
             ]
         }
     }
