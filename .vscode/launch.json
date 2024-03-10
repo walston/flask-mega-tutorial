@@ -19,6 +19,20 @@
                 "--debug",
             ],
             "jinja": true
+        },
+        {
+            "name": "Run Flask",
+            "type": "debugpy",
+            "request": "launch",
+            "module": "flask",
+            "env": {
+                "FLASK_APP": "microblog.py",
+                "FLASK_RUN_PORT": "8080"
+            },
+            "args": [
+                "run",
+            ],
+            "jinja": true
         }
     ]
 }
