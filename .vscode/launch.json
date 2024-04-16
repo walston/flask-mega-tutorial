@@ -33,6 +33,13 @@
                 "run",
             ],
             "jinja": true
-        }
+        },
+        {
+            "name": "App Test",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "tests.py",
+            "console": "integratedTerminal"
+        },
     ]
 }
