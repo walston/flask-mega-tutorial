@@ -5,7 +5,7 @@ from flask_migrate import Migrate
 from flask_login import LoginManager
 from logging.handlers import RotatingFileHandler
 from flask_moment import Moment
-from flask_babel import Babel
+from flask_babel import Babel, lazy_gettext as _l
 
 import logging
 import os
@@ -19,8 +19,10 @@ app = Flask(__name__)
 app.config.from_object(Config)
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
+
 login = LoginManager(app)
 login.login_view = 'login'
+login.login_message = _l('Please log in to access this page.')
 moment = Moment(app)
 babel = Babel(app, locale_selector=get_locale)
 
