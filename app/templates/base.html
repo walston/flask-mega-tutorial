@@ -6,6 +6,7 @@
     {% else %}
     <title>{{ _('Home Page') }} - {{ _('Microblog') }}</title>
     {% endif %}
+    {{ moment.include_moment() }}
     <style>
         body {
             font-family: 'Proxima Nova', Helvetica, sans-serif;
