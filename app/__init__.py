@@ -13,6 +13,7 @@ import os
 
 def get_locale():
     return request.accept_languages.best_match(app.config['LANGUAGES'])
+    # return 'es'
 
 
 app = Flask(__name__)
