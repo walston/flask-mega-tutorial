@@ -8,7 +8,7 @@ from flask_babel import lazy_gettext as _l, _
 
 
 class LoginForm(FlaskForm):
-    username = StringField(_('Username'), validators=[DataRequired()])
+    username = StringField(_l('Username'), validators=[DataRequired()])
     password = PasswordField(_l('Password'), validators=[DataRequired()])
     remember_me = BooleanField(_l('Remember Me'))
     submit = SubmitField(_l('Sign In'))
