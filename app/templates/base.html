@@ -54,6 +54,40 @@
     {% endif %}
     {% endwith %}
     {% block content %}{% endblock %}
+    <script>
+        async function translate(srcEl, destEl, srcLang, destLang) {
+            const spinner = document.createElement('img');
+            spinner.src = "{{ url_for('static', filename='loading.gif') }}"
+
+            const toTranslateEl = document.getElementById(srcEl);
+            const translationEl = document.getElementById(destEl);
+            while (translationEl.firstElementChild)
+                translationEl.removeChild(translationEl.firstElementChild)
+
+            translationEl.appendChild(spinner);
+
+            try {
+                const response = await fetch('/translate', {
+                    method: 'POST',
+                    headers: { 'content-type': 'application/json; charset=utf-8' },
+                    body: JSON.stringify({
+                        text: toTranslateEl?.innerText,
+                        source_language: srcLang,
+                        dest_language: destLang
+                    })
+                });
+
+                const translation = await response.json().then(({ text }) => text);
+
+                translationEl.removeChild(spinner);
+                translationEl.appendChild(document.createTextNode(translation));
+                return true;
+            } catch (error) {
+                console.error(error);
+                return false;
+            }
+        }
+    </script>
 </body>
 
 </html>

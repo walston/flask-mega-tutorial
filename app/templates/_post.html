@@ -9,10 +9,17 @@
             {% endset %}
             {{ _('%(username)s said %(when)s', username=user_link, when=moment(post.timestamp).fromNow()) }}
             <br />
-            {{ post.body }}
+            <span id="post{{ post.id }}">{{ post.body }}</span>
+
+            {% if post.language and post.language != g.locale %}
+            <br /><br />
+            {% set translate_link %}
+            translate( 'post{{ post.id }}', 'translation{{ post.id }}', '{{ post.language }}', '{{ g.locale }}' )
+            {% endset %}
+            <span id="translation{{ post.id }}">
+                <a href="javascript:{{ translate_link }};"> {{ _('Translate') }} </a>
+            </span>
+            {% endif %}
         </td>
     </tr>
-    <script>
-        console.log(JSON.stringify(post.author))
-    </script>
 </table>
