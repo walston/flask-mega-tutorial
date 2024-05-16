@@ -10,9 +10,7 @@
             "request": "launch",
             "module": "flask",
             "env": {
-                "FLASK_APP": "microblog.py",
                 "FLASK_ENV": "development",
-                "FLASK_RUN_PORT": "8080"
             },
             "args": [
                 "run",
@@ -25,10 +23,6 @@
             "type": "debugpy",
             "request": "launch",
             "module": "flask",
-            "env": {
-                "FLASK_APP": "microblog.py",
-                "FLASK_RUN_PORT": "8080"
-            },
             "args": [
                 "run",
             ],
