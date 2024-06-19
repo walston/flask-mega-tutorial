@@ -1,19 +1,16 @@
 {
-    "name": "flask-environment",
-    "build": {
-        "dockerfile": "${localWorkspaceFolder}/Dockerfile",
-        "context": "${localWorkspaceFolder}"
-    },
-    "workspaceFolder": "/usr/src",
-    "workspaceMount": "type=bind,source=${localWorkspaceFolder},target=/usr/src",
-    "customizations": {
-        "vscode": {
-            "extensions": [
-                "ms-python.python",
-                "tamasfe.even-better-toml",
-                "wholroyd.jinja",
-                "ms-python.autopep8"
-            ]
-        }
+  "name": "flask-environment",
+  "dockerComposeFile": "../docker-compose.yaml",
+  "service": "flask",
+  "workspaceFolder": "/usr/src",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-python.python",
+        "tamasfe.even-better-toml",
+        "wholroyd.jinja",
+        "ms-python.autopep8"
+      ]
     }
+  }
 }
