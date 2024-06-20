@@ -1,7 +1,7 @@
 {
   "name": "flask-environment",
-  "dockerComposeFile": "../docker-compose.yaml",
-  "service": "flask",
+  "dockerComposeFile": "../docker-compose.yml",
+  "service": "microblog",
   "workspaceFolder": "/usr/src",
   "customizations": {
     "vscode": {
