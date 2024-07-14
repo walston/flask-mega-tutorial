@@ -1,0 +1,41 @@
+version: '3'
+
+services:
+  microblog:
+    build:
+      context: ..
+      dockerfile: Dockerfile
+    command: flask run
+    env_file: "../.env"
+    environment:
+      - FLASK_DEBUG=1
+      - FLASK_SERVER=0.0.0.0
+      - MAIL_SERVER=smtp.googlemail.com
+      - MAIL_PORT=587
+      - MAIL_USE_TLS=true
+      - DATABASE_URL=mysql+pymysql://microblog:$MYSQL_PASSWORD@mysql/microblog
+      - ELASTICSEARCH_URL=http://elasticsearch:9200
+    ports:
+      - "8080:5000"
+    volumes:
+      - "..:/usr/src"
+
+  elastisearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:8.11.1
+    ports:
+      - "9200:9200"
+    mem_limit: 2g
+    environment:
+      - discovery.type=single-node
+      - xpack.security.enabled=false
+
+  mysql:
+    image: mysql:latest
+    environment:
+      - MYSQL_RANDOM_ROOT_PASSWORD=yes
+      - MYSQL_DATABASE=microblog
+    env_file: "../.env"
+    volumes:
+      - type: bind
+        source: "../data"
+        target: "/var/lib/mysql"
