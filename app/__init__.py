@@ -31,6 +31,7 @@ babel = Babel(app, locale_selector=get_locale)
 from app import routes, models, errors
 
 if not app.debug:
+    print('Running in "production" mode')
     if not os.path.exists('logs'):
         os.mkdir('logs')
     file_handler = RotatingFileHandler(

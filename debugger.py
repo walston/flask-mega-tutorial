@@ -1,19 +1,14 @@
-from config import Config
-
-
 def initialize_flask_server_debugger_if_needed():
-    if Config.DEBUG == True:
-        import multiprocessing
+    import multiprocessing
+    if multiprocessing.current_process().pid > 1:
+        import debugpy
 
-        if multiprocessing.current_process().pid > 1:
-            import debugpy
-
-            try:
-                debugpy.listen(("0.0.0.0", 10001))
-                print("⏳ VS Code debugger can now be attached, press F5 in VS Code ⏳",
-                      flush=True)
-                debugpy.wait_for_client()
-                print("🎉 VS Code debugger attached, enjoy debugging 🎉",
-                      flush=True)
-            except:
-                print('Unable to VS Code launch debugger')
+        try:
+            debugpy.listen(("0.0.0.0", 10001))
+            print("⏳ VS Code debugger can now be attached, press F5 in VS Code ⏳",
+                  flush=True)
+            debugpy.wait_for_client()
+            print("🎉 VS Code debugger attached, enjoy debugging 🎉",
+                  flush=True)
+        except:
+            print('Unable to VS Code launch debugger')
