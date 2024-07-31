@@ -2,6 +2,9 @@ FROM python:3.12-slim-bookworm
 WORKDIR /usr/src
 COPY . /usr/src
 
+RUN ["apt-get", "update"]
+RUN ["apt-get", "install", "-y", "curl"]
+
 COPY ./requirements.txt /usr/src
 RUN ["pip", "install", "-r", "requirements.txt"]
 ENV FLASK_APP="/usr/src/microblog.py"

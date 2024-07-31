@@ -1,4 +1,5 @@
 from flask import Flask, request
+from debugger import initialize_flask_server_debugger_if_needed
 from config import Config
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
@@ -40,3 +41,5 @@ if not app.debug:
     app.logger.addHandler(file_handler)
     app.logger.setLevel(logging.INFO)
     app.logger.info('Microblog startup')
+else:
+    initialize_flask_server_debugger_if_needed()

@@ -4,6 +4,7 @@ blinker==1.7.0
 certifi==2024.2.2
 charset-normalizer==3.3.2
 click==8.1.7
+debugpy==1.8.2
 dnspython==2.6.0
 email-validator==2.1.0.post1
 Flask==3.0.2

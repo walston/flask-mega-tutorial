@@ -8,19 +8,22 @@ services:
     command: flask run
     env_file: "../.env"
     environment:
+      - DEBUGGER=True
       - FLASK_DEBUG=1
-      - FLASK_SERVER=0.0.0.0
       - MAIL_SERVER=smtp.googlemail.com
       - MAIL_PORT=587
-      - MAIL_USE_TLS=true
+      - MAIL_USE_TLS=True
       - DATABASE_URL=mysql+pymysql://microblog:$MYSQL_PASSWORD@mysql/microblog
       - ELASTICSEARCH_URL=http://elasticsearch:9200
     ports:
-      - "8080:5000"
+      - "127.0.0.1:8080:5000"
     volumes:
       - "..:/usr/src"
+    depends_on:
+      - mysql
+      - elasticsearch
 
-  elastisearch:
+  elasticsearch:
     image: docker.elastic.co/elasticsearch/elasticsearch:8.11.1
     ports:
       - "9200:9200"
