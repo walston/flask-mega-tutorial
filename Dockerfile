@@ -3,7 +3,7 @@ WORKDIR /usr/src
 COPY . /usr/src
 
 RUN ["apt-get", "update"]
-RUN ["apt-get", "install", "-y", "curl"]
+RUN ["apt-get", "install", "-y", "git"]
 
 COPY ./requirements.txt /usr/src
 RUN ["pip", "install", "-r", "requirements.txt"]
