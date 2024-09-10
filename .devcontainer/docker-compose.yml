@@ -3,19 +3,18 @@ services:
     build:
       context: ..
       dockerfile: Dockerfile
-    command: flask run
     env_file: "../.env"
     environment:
-      - FLASK_DEBUG=1
       - MAIL_SERVER=smtp.googlemail.com
       - MAIL_PORT=587
       - MAIL_USE_TLS=True
       - DATABASE_URL=mysql+pymysql://microblog:$MYSQL_PASSWORD@mysql/microblog
       - ELASTICSEARCH_URL=http://elasticsearch:9200
-    ports:
-      - "127.0.0.1:8080:5000"
+    command: flask run --debug --host=0.0.0.0 --port=5000
     volumes:
       - "..:/usr/src"
+    ports:
+    - "0.0.0.0:5050:5000"
     depends_on:
       - mysql
       - elasticsearch
@@ -32,8 +31,9 @@ services:
   mysql:
     image: mysql:latest
     environment:
-      - MYSQL_RANDOM_ROOT_PASSWORD=yes
       - MYSQL_DATABASE=microblog
+      - MYSQL_USER=microblog
+      - MYSQL_ROOT_PASSWORD=$MYSQL_PASSWORD
     env_file: "../.env"
     volumes:
       - type: bind

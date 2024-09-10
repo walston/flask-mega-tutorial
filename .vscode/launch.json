@@ -5,17 +5,6 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "Debug Flask",
-      "type": "debugpy",
-      "request": "launch",
-      "module": "flask",
-      "env": {
-        "FLASK_ENV": "development"
-      },
-      "args": ["run", "--debug"],
-      "jinja": true
-    },
-    {
       "name": "Python: Remote Attach",
       "type": "debugpy",
       "request": "attach",
@@ -30,20 +19,5 @@
         }
       ]
     },
-    {
-      "name": "Run Flask",
-      "type": "debugpy",
-      "request": "launch",
-      "module": "flask",
-      "args": ["run"],
-      "jinja": true
-    },
-    {
-      "name": "App Test",
-      "type": "debugpy",
-      "request": "launch",
-      "program": "tests.py",
-      "console": "integratedTerminal"
-    }
   ]
 }
